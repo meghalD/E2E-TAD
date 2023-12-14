@@ -5,13 +5,21 @@ dim_feedforward: 1024
 num_queries: 40
 
 # data setting
+# dataset_name: thumos14
+# feature: i3d2s
+# feature_dim: 2048
+# online_slice: true
+# slice_len: 128
+# slice_overlap: 0.75
+# test_slice_overlap: 0.25
 dataset_name: thumos14
-feature: i3d2s
-feature_dim: 2048
+feature: img10fps
 online_slice: true
+feature_dim: 2048
 slice_len: 128
 slice_overlap: 0.75
 test_slice_overlap: 0.25
+input_type: image
 
 # output
 output_dir: outputs/thumos14_i3d2s_tadtr

@@ -65,7 +65,7 @@ class TADEvaluator(object):
 
         if dataset_name == 'thumos14':
             subset_mapping = {'train': 'val', 'val': 'test'}
-            anno_file = 'data/thumos14/th14_annotations_with_fps_duration.json'
+            anno_file = '/home/mdani31/akata-shared/datasets/THUMOS14/thumos_e2e/th14_annotations_with_fps_duration.json'
             # follow SSN/PGCN/AFSD/MUSES to remove three falsely annotated videos
             self.ignored_videos = ['video_test_0000270', 'video_test_0001292', 'video_test_0001496']
         else:

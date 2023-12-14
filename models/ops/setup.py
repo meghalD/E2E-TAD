@@ -8,7 +8,7 @@
 # ------------------------------------------------------------------------------------------------
 # Modified from https://github.com/chengdazhi/Deformable-Convolution-V2-PyTorch/tree/pytorch_1.0.0
 # ------------------------------------------------------------------------------------------------
-
+#/shared-local/mdani31/anaconda3/envs/net/bin$ ./nvcc -V
 import os
 import glob
 import pdb
@@ -37,7 +37,7 @@ def get_extensions():
    
     extra_compile_args = {"cxx": []}
     define_macros = []
-
+    print(CUDA_HOME)
     if torch.cuda.is_available() and CUDA_HOME is not None:
         define_macros += [("WITH_CUDA", None)]
         extra_compile_args["nvcc"] = [
@@ -46,8 +46,20 @@ def get_extensions():
             "-D__CUDA_NO_HALF_CONVERSIONS__",
             "-D__CUDA_NO_HALF2_OPERATORS__",
         ]
+    # if torch.cuda.is_available():
+    #     os.environ['CUDA_HOME'] = '/shared-local/mdani31/anaconda3/envs/net/pkgs/cuda-10.2'
+    #     #from torch.utils.cpp_extension import CUDA_HOME
+    #     print(os.environ['CUDA_HOME'])
+    #     if os.environ['CUDA_HOME'] is not None:
+    #         define_macros += [("WITH_CUDA", None)]
+    #         extra_compile_args["nvcc"] = [
+    #             "-DCUDA_HAS_FP16=1",
+    #             "-D__CUDA_NO_HALF_OPERATORS__",
+    #             "-D__CUDA_NO_HALF_CONVERSIONS__",
+    #             "-D__CUDA_NO_HALF2_OPERATORS__",
+    #         ]
     else:
-        raise NotImplementedError('Cuda is not availabel')
+        raise NotImplementedError('Cuda is not available')
 
 
     ext_modules = [
